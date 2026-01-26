@@ -1,7 +1,6 @@
 "use client";
 
 import { CloudUpload, type LucideIcon } from "lucide-react";
-
 // import { Button } from "@/components/ui/button";
 import {
   SidebarGroup,
@@ -10,6 +9,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Link, useLocation } from "react-router";
 
 export function NavMain({
   items,
@@ -20,6 +20,10 @@ export function NavMain({
     icon?: LucideIcon;
   }[];
 }) {
+  const { pathname } = useLocation();
+  const activePage =
+    pathname.split("/").filter(Boolean)[1]?.split("?")[0] || "";
+  console.log("activePage", pathname, activePage);
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -42,13 +46,21 @@ export function NavMain({
             </Button> */}
           </SidebarMenuItem>
         </SidebarMenu>
-        <SidebarMenu>
+        <SidebarMenu className="gap-0.5">
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
-              </SidebarMenuButton>
+              <Link to={item.url}>
+                <SidebarMenuButton
+                  tooltip={item.title}
+                  isActive={
+                    activePage ===
+                    (item.url.split("/").filter(Boolean)[1] || "")
+                  }
+                >
+                  {item.icon && <item.icon />}
+                  <span>{item.title}</span>
+                </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>

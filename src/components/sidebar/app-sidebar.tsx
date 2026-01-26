@@ -14,6 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Link } from "react-router";
 
 const data = {
   user: {
@@ -24,22 +25,22 @@ const data = {
   navMain: [
     {
       title: "Gallery",
-      url: "#",
+      url: "/dashboard",
       icon: LayoutDashboard,
     },
     {
       title: "Albums",
-      url: "#",
+      url: "/dashboard/albums",
       icon: Folder,
     },
     {
       title: "Ask",
-      url: "#",
+      url: "/dashboard/ask",
       icon: Astroid,
     },
     {
       title: "Settings",
-      url: "#",
+      url: "/dashboard/settings",
       icon: Bolt,
     },
   ],
@@ -55,10 +56,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
-              <a href="#">
+              <Link to="/dashboard">
                 <Image className="size-5! text-primary" />
                 <span className="text-base font-semibold">Fotto.in</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
