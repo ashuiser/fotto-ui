@@ -133,8 +133,3 @@
     @apply font-mono scroll-smooth;
   }
 }
-
-.lg-outer .lg-thumb-item.active,
-.lg-outer .lg-thumb-item:hover {
-  border-color: var(--primary) !important;
-}

@@ -2,6 +2,7 @@ import { AppSidebar } from "@/components/sidebar/app-sidebar";
 import { SiteHeader } from "@/components/sidebar/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Outlet } from "react-router";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function DashboardLayout() {
   return (
@@ -16,10 +17,12 @@ export default function DashboardLayout() {
     >
       <AppSidebar variant="inset" />
       <SidebarInset className="overflow-hidden">
-        <div className="flex-1 overflow-y-auto">
+        <ScrollArea className="h-full w-full">
           <SiteHeader />
-          <Outlet />
-        </div>
+          <div className="container mx-auto">
+            <Outlet />
+          </div>
+        </ScrollArea>
       </SidebarInset>
     </SidebarProvider>
   );

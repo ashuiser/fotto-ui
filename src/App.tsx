@@ -8,10 +8,9 @@ import AlbumsPage from "./pages/AlbumsPage";
 import AskPage from "./pages/AskPage";
 import SettingsPage from "./pages/SettingsPage";
 import "react-photo-album/rows.css";
-import "lightgallery/css/lightgallery.css";
-import "lightgallery/css/lg-zoom.css";
-import "lightgallery/css/lg-video.css";
-import "lightgallery/css/lg-thumbnail.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+import "yet-another-react-lightbox/styles.css";
+import AlbumViewPage from "./pages/AlbumViewPage";
 
 function App() {
   return (
@@ -24,6 +23,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<GalleryPage />} />
           <Route path="albums" element={<AlbumsPage />} />
+          <Route path="albums/:albumId" element={<AlbumViewPage />} />
           <Route path="ask" element={<AskPage />} />
           <Route path="settings" element={<SettingsPage />} />
         </Route>
